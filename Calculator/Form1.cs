@@ -12,8 +12,10 @@ namespace Calculator
 {
     public partial class Form1 : Form
     {
-        private double screen_reg = 0.0;
-        
+        private double reg0 = 0.0;
+        private double reg1 = 0.0;
+        private double reg2 = 0.0;
+
         public Form1()
         {
             InitializeComponent();
@@ -65,30 +67,25 @@ namespace Calculator
 
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
         private void num_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             int val = int.Parse(btn.Text);
-            if (screen_reg == 0.0)
+            if (reg0 == 0.0)
             {
-                screen_reg = val;
+                reg0 = val;
             }
             else
             {
                 string repr = screen.Text + val.ToString();
-                screen_reg = double.Parse(repr);
+                reg0 = double.Parse(repr);
             }
             UpdateScreen();
         }
 
         private void UpdateScreen()
         {
-            screen.Text = screen_reg.ToString();
+            screen.Text = reg0.ToString();
         }
     }
 }
