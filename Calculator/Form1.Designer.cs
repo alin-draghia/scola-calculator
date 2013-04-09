@@ -80,65 +80,67 @@
             this.mainMenu.TabIndex = 0;
             this.mainMenu.Text = "menuStrip1";
             // 
-            // fileToolStripMenuItem
+            // fileMenu
             // 
             this.fileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitMenu});
-            this.fileMenu.Name = "fileToolStripMenuItem";
+            this.fileMenu.Name = "fileMenu";
             this.fileMenu.Size = new System.Drawing.Size(37, 20);
             this.fileMenu.Text = "File";
             // 
-            // exitToolStripMenuItem
+            // exitMenu
             // 
-            this.exitMenu.Name = "exitToolStripMenuItem";
-            this.exitMenu.Size = new System.Drawing.Size(152, 22);
+            this.exitMenu.Name = "exitMenu";
+            this.exitMenu.Size = new System.Drawing.Size(92, 22);
             this.exitMenu.Text = "Exit";
             // 
-            // editToolStripMenuItem
+            // editMenu
             // 
             this.editMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyMenu,
             this.pasteMenu});
-            this.editMenu.Name = "editToolStripMenuItem";
+            this.editMenu.Name = "editMenu";
             this.editMenu.Size = new System.Drawing.Size(39, 20);
             this.editMenu.Text = "Edit";
             // 
-            // copyToolStripMenuItem
+            // copyMenu
             // 
-            this.copyMenu.Name = "copyToolStripMenuItem";
-            this.copyMenu.Size = new System.Drawing.Size(152, 22);
+            this.copyMenu.Name = "copyMenu";
+            this.copyMenu.Size = new System.Drawing.Size(102, 22);
             this.copyMenu.Text = "Copy";
             // 
-            // pasteToolStripMenuItem
+            // pasteMenu
             // 
-            this.pasteMenu.Name = "pasteToolStripMenuItem";
-            this.pasteMenu.Size = new System.Drawing.Size(152, 22);
+            this.pasteMenu.Name = "pasteMenu";
+            this.pasteMenu.Size = new System.Drawing.Size(102, 22);
             this.pasteMenu.Text = "Paste";
             // 
-            // helpToolStripMenuItem
+            // helpMenu
             // 
             this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutMenu});
-            this.helpMenu.Name = "helpToolStripMenuItem";
+            this.helpMenu.Name = "helpMenu";
             this.helpMenu.Size = new System.Drawing.Size(44, 20);
             this.helpMenu.Text = "Help";
             // 
-            // aboutToolStripMenuItem
+            // aboutMenu
             // 
-            this.aboutMenu.Name = "aboutToolStripMenuItem";
-            this.aboutMenu.Size = new System.Drawing.Size(152, 22);
+            this.aboutMenu.Name = "aboutMenu";
+            this.aboutMenu.Size = new System.Drawing.Size(107, 22);
             this.aboutMenu.Text = "About";
             // 
             // screen
             // 
             this.screen.BackColor = System.Drawing.SystemColors.Control;
             this.screen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.screen.Enabled = false;
             this.screen.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.screen.Location = new System.Drawing.Point(12, 27);
             this.screen.Name = "screen";
             this.screen.ReadOnly = true;
             this.screen.Size = new System.Drawing.Size(234, 30);
             this.screen.TabIndex = 1;
+            this.screen.TabStop = false;
             this.screen.Text = "1234.00568";
             this.screen.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -150,6 +152,7 @@
             this.memClearBtn.Name = "memClearBtn";
             this.memClearBtn.Size = new System.Drawing.Size(42, 23);
             this.memClearBtn.TabIndex = 2;
+            this.memClearBtn.TabStop = false;
             this.memClearBtn.Text = "MC";
             this.memClearBtn.UseVisualStyleBackColor = true;
             // 
@@ -161,6 +164,7 @@
             this.memRecallBtn.Name = "memRecallBtn";
             this.memRecallBtn.Size = new System.Drawing.Size(42, 23);
             this.memRecallBtn.TabIndex = 2;
+            this.memRecallBtn.TabStop = false;
             this.memRecallBtn.Text = "MR";
             this.memRecallBtn.UseVisualStyleBackColor = true;
             // 
@@ -172,6 +176,7 @@
             this.memStoreBtn.Name = "memStoreBtn";
             this.memStoreBtn.Size = new System.Drawing.Size(42, 23);
             this.memStoreBtn.TabIndex = 2;
+            this.memStoreBtn.TabStop = false;
             this.memStoreBtn.Text = "MS";
             this.memStoreBtn.UseVisualStyleBackColor = true;
             // 
@@ -183,6 +188,7 @@
             this.memAddBtn.Name = "memAddBtn";
             this.memAddBtn.Size = new System.Drawing.Size(42, 23);
             this.memAddBtn.TabIndex = 2;
+            this.memAddBtn.TabStop = false;
             this.memAddBtn.Text = "M+";
             this.memAddBtn.UseVisualStyleBackColor = true;
             // 
@@ -194,6 +200,7 @@
             this.memSubBtn.Name = "memSubBtn";
             this.memSubBtn.Size = new System.Drawing.Size(42, 23);
             this.memSubBtn.TabIndex = 2;
+            this.memSubBtn.TabStop = false;
             this.memSubBtn.Text = "M-";
             this.memSubBtn.UseVisualStyleBackColor = true;
             // 
@@ -205,6 +212,7 @@
             this.delBtn.Name = "delBtn";
             this.delBtn.Size = new System.Drawing.Size(42, 23);
             this.delBtn.TabIndex = 2;
+            this.delBtn.TabStop = false;
             this.delBtn.Text = "DEL";
             this.delBtn.UseVisualStyleBackColor = true;
             // 
@@ -216,6 +224,7 @@
             this.clearEntryBtn.Name = "clearEntryBtn";
             this.clearEntryBtn.Size = new System.Drawing.Size(42, 23);
             this.clearEntryBtn.TabIndex = 2;
+            this.clearEntryBtn.TabStop = false;
             this.clearEntryBtn.Text = "CE";
             this.clearEntryBtn.UseVisualStyleBackColor = true;
             // 
@@ -227,6 +236,7 @@
             this.clearBtn.Name = "clearBtn";
             this.clearBtn.Size = new System.Drawing.Size(42, 23);
             this.clearBtn.TabIndex = 2;
+            this.clearBtn.TabStop = false;
             this.clearBtn.Text = "C";
             this.clearBtn.UseVisualStyleBackColor = true;
             // 
@@ -238,6 +248,7 @@
             this.changeSignBtn.Name = "changeSignBtn";
             this.changeSignBtn.Size = new System.Drawing.Size(42, 23);
             this.changeSignBtn.TabIndex = 2;
+            this.changeSignBtn.TabStop = false;
             this.changeSignBtn.Text = "+/-";
             this.changeSignBtn.UseVisualStyleBackColor = true;
             // 
@@ -249,6 +260,7 @@
             this.sqrtBtn.Name = "sqrtBtn";
             this.sqrtBtn.Size = new System.Drawing.Size(42, 23);
             this.sqrtBtn.TabIndex = 2;
+            this.sqrtBtn.TabStop = false;
             this.sqrtBtn.Text = "SQR";
             this.sqrtBtn.UseVisualStyleBackColor = true;
             // 
@@ -260,8 +272,10 @@
             this.num7.Name = "num7";
             this.num7.Size = new System.Drawing.Size(42, 23);
             this.num7.TabIndex = 2;
+            this.num7.TabStop = false;
             this.num7.Text = "7";
             this.num7.UseVisualStyleBackColor = true;
+            this.num7.Click += new System.EventHandler(this.num_Click);
             // 
             // num8
             // 
@@ -271,8 +285,10 @@
             this.num8.Name = "num8";
             this.num8.Size = new System.Drawing.Size(42, 23);
             this.num8.TabIndex = 2;
+            this.num8.TabStop = false;
             this.num8.Text = "8";
             this.num8.UseVisualStyleBackColor = true;
+            this.num8.Click += new System.EventHandler(this.num_Click);
             // 
             // num9
             // 
@@ -282,8 +298,10 @@
             this.num9.Name = "num9";
             this.num9.Size = new System.Drawing.Size(42, 23);
             this.num9.TabIndex = 2;
+            this.num9.TabStop = false;
             this.num9.Text = "9";
             this.num9.UseVisualStyleBackColor = true;
+            this.num9.Click += new System.EventHandler(this.num_Click);
             // 
             // divBtn
             // 
@@ -293,6 +311,7 @@
             this.divBtn.Name = "divBtn";
             this.divBtn.Size = new System.Drawing.Size(42, 23);
             this.divBtn.TabIndex = 2;
+            this.divBtn.TabStop = false;
             this.divBtn.Text = "/";
             this.divBtn.UseVisualStyleBackColor = true;
             // 
@@ -304,6 +323,7 @@
             this.percentBtn.Name = "percentBtn";
             this.percentBtn.Size = new System.Drawing.Size(42, 23);
             this.percentBtn.TabIndex = 2;
+            this.percentBtn.TabStop = false;
             this.percentBtn.Text = "%";
             this.percentBtn.UseVisualStyleBackColor = true;
             // 
@@ -315,8 +335,10 @@
             this.num4.Name = "num4";
             this.num4.Size = new System.Drawing.Size(42, 23);
             this.num4.TabIndex = 2;
+            this.num4.TabStop = false;
             this.num4.Text = "4";
             this.num4.UseVisualStyleBackColor = true;
+            this.num4.Click += new System.EventHandler(this.num_Click);
             // 
             // num5
             // 
@@ -326,8 +348,10 @@
             this.num5.Name = "num5";
             this.num5.Size = new System.Drawing.Size(42, 23);
             this.num5.TabIndex = 2;
+            this.num5.TabStop = false;
             this.num5.Text = "5";
             this.num5.UseVisualStyleBackColor = true;
+            this.num5.Click += new System.EventHandler(this.num_Click);
             // 
             // num6
             // 
@@ -337,8 +361,10 @@
             this.num6.Name = "num6";
             this.num6.Size = new System.Drawing.Size(42, 23);
             this.num6.TabIndex = 2;
+            this.num6.TabStop = false;
             this.num6.Text = "6";
             this.num6.UseVisualStyleBackColor = true;
+            this.num6.Click += new System.EventHandler(this.num_Click);
             // 
             // mulBtn
             // 
@@ -348,6 +374,7 @@
             this.mulBtn.Name = "mulBtn";
             this.mulBtn.Size = new System.Drawing.Size(42, 23);
             this.mulBtn.TabIndex = 2;
+            this.mulBtn.TabStop = false;
             this.mulBtn.Text = "*";
             this.mulBtn.UseVisualStyleBackColor = true;
             // 
@@ -359,6 +386,7 @@
             this.invBtn.Name = "invBtn";
             this.invBtn.Size = new System.Drawing.Size(42, 23);
             this.invBtn.TabIndex = 2;
+            this.invBtn.TabStop = false;
             this.invBtn.Text = "1/x";
             this.invBtn.UseVisualStyleBackColor = true;
             // 
@@ -370,8 +398,10 @@
             this.num1.Name = "num1";
             this.num1.Size = new System.Drawing.Size(42, 23);
             this.num1.TabIndex = 2;
+            this.num1.TabStop = false;
             this.num1.Text = "1";
             this.num1.UseVisualStyleBackColor = true;
+            this.num1.Click += new System.EventHandler(this.num_Click);
             // 
             // num2
             // 
@@ -381,8 +411,10 @@
             this.num2.Name = "num2";
             this.num2.Size = new System.Drawing.Size(42, 23);
             this.num2.TabIndex = 2;
+            this.num2.TabStop = false;
             this.num2.Text = "2";
             this.num2.UseVisualStyleBackColor = true;
+            this.num2.Click += new System.EventHandler(this.num_Click);
             // 
             // num3
             // 
@@ -392,8 +424,10 @@
             this.num3.Name = "num3";
             this.num3.Size = new System.Drawing.Size(42, 23);
             this.num3.TabIndex = 2;
+            this.num3.TabStop = false;
             this.num3.Text = "3";
             this.num3.UseVisualStyleBackColor = true;
+            this.num3.Click += new System.EventHandler(this.num_Click);
             // 
             // subBtn
             // 
@@ -403,6 +437,7 @@
             this.subBtn.Name = "subBtn";
             this.subBtn.Size = new System.Drawing.Size(42, 23);
             this.subBtn.TabIndex = 2;
+            this.subBtn.TabStop = false;
             this.subBtn.Text = "-";
             this.subBtn.UseVisualStyleBackColor = true;
             // 
@@ -414,6 +449,7 @@
             this.equalBtn.Name = "equalBtn";
             this.equalBtn.Size = new System.Drawing.Size(42, 50);
             this.equalBtn.TabIndex = 2;
+            this.equalBtn.TabStop = false;
             this.equalBtn.Text = "=";
             this.equalBtn.UseVisualStyleBackColor = true;
             // 
@@ -425,8 +461,10 @@
             this.num0.Name = "num0";
             this.num0.Size = new System.Drawing.Size(90, 23);
             this.num0.TabIndex = 2;
+            this.num0.TabStop = false;
             this.num0.Text = "0";
             this.num0.UseVisualStyleBackColor = true;
+            this.num0.Click += new System.EventHandler(this.num_Click);
             // 
             // dotBtn
             // 
@@ -436,6 +474,7 @@
             this.dotBtn.Name = "dotBtn";
             this.dotBtn.Size = new System.Drawing.Size(42, 23);
             this.dotBtn.TabIndex = 2;
+            this.dotBtn.TabStop = false;
             this.dotBtn.Text = ".";
             this.dotBtn.UseVisualStyleBackColor = true;
             // 
@@ -447,6 +486,7 @@
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(42, 23);
             this.addBtn.TabIndex = 2;
+            this.addBtn.TabStop = false;
             this.addBtn.Text = "+";
             this.addBtn.UseVisualStyleBackColor = true;
             // 
@@ -488,6 +528,8 @@
             this.MainMenuStrip = this.mainMenu;
             this.Name = "Form1";
             this.Text = "Calculator";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
             this.ResumeLayout(false);
