@@ -264,6 +264,7 @@
             this.sqrtBtn.TabStop = false;
             this.sqrtBtn.Text = "SQR";
             this.sqrtBtn.UseVisualStyleBackColor = true;
+            this.sqrtBtn.Click += new System.EventHandler(this.sqrtBtn_Click);
             // 
             // num7
             // 
@@ -315,6 +316,7 @@
             this.divBtn.TabStop = false;
             this.divBtn.Text = "/";
             this.divBtn.UseVisualStyleBackColor = true;
+            this.divBtn.Click += new System.EventHandler(this.divBtn_Click);
             // 
             // percentBtn
             // 
@@ -327,6 +329,7 @@
             this.percentBtn.TabStop = false;
             this.percentBtn.Text = "%";
             this.percentBtn.UseVisualStyleBackColor = true;
+            this.percentBtn.Click += new System.EventHandler(this.percentBtn_Click);
             // 
             // num4
             // 
@@ -378,6 +381,7 @@
             this.mulBtn.TabStop = false;
             this.mulBtn.Text = "*";
             this.mulBtn.UseVisualStyleBackColor = true;
+            this.mulBtn.Click += new System.EventHandler(this.mulBtn_Click);
             // 
             // invBtn
             // 
@@ -441,6 +445,7 @@
             this.subBtn.TabStop = false;
             this.subBtn.Text = "-";
             this.subBtn.UseVisualStyleBackColor = true;
+            this.subBtn.Click += new System.EventHandler(this.subBtn_Click);
             // 
             // equalBtn
             // 
@@ -453,6 +458,7 @@
             this.equalBtn.TabStop = false;
             this.equalBtn.Text = "=";
             this.equalBtn.UseVisualStyleBackColor = true;
+            this.equalBtn.Click += new System.EventHandler(this.equalBtn_Click);
             // 
             // num0
             // 
@@ -491,6 +497,7 @@
             this.addBtn.TabStop = false;
             this.addBtn.Text = "+";
             this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // Form1
             // 
