@@ -12,6 +12,7 @@ namespace Calculator
 {
     public partial class Form1 : Form
     {
+        private bool dotPressed;
         private double reg0 = 0.0;
         private double reg1 = 0.0;
         private double reg2 = 0.0;
@@ -23,7 +24,7 @@ namespace Calculator
             this.KeyPreview = true;
             UpdateScreen();
         }
-        
+
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
             Button btn = null;
@@ -60,6 +61,9 @@ namespace Calculator
                 case '9':
                     btn = num9;
                     break;
+                case '.':
+                    btn = dotBtn;
+                    break;
             }
 
             if (btn != null)
@@ -71,21 +75,28 @@ namespace Calculator
         {
             Button btn = sender as Button;
             int val = int.Parse(btn.Text);
-            if (reg0 == 0.0)
+
+            string repr = screen.Text;
+            if (dotPressed)
             {
-                reg0 = val;
+                repr += '.';
+                dotPressed = false;
             }
-            else
-            {
-                string repr = screen.Text + val.ToString();
-                reg0 = double.Parse(repr);
-            }
+            repr += val.ToString();
+            reg0 = double.Parse(repr);
+
             UpdateScreen();
         }
 
         private void UpdateScreen()
         {
             screen.Text = reg0.ToString();
+        }
+
+        private void dotBtn_Click(object sender, EventArgs e)
+        {
+            if (!screen.Text.Contains('.'))
+                dotPressed = true;
         }
     }
 }
