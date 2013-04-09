@@ -15,9 +15,22 @@ namespace Calculator
         private bool dirty = false;
         private bool dotPressed = false;
         private bool negative = false;
-        private double reg0 = 0.0;
-        private double reg1 = 0.0;
-        private double reg2 = 0.0;
+        private string reg0 = String.Empty;
+        private string reg1 = String.Empty;
+        private string reg2 = String.Empty;
+
+        private DataTable dataTable = new DataTable();
+
+        enum Operation
+        {
+            None,
+            Add,
+            Sub,
+            Div,
+            Mul
+        };
+
+        Operation op = Operation.None;
 
         public Form1()
         {
@@ -25,6 +38,13 @@ namespace Calculator
             // set this, otherwise key press won't fire
             this.KeyPreview = true;
             UpdateScreen();
+            DataTable dt = new DataTable();
+            double v = double.Parse(dt.Compute("-5.44", "").ToString());
+            v = double.Parse(dt.Compute("-5.44 + 10.10", "").ToString());
+            v = double.Parse(dt.Compute("+3", "").ToString());
+            v = double.Parse(dt.Compute("10/3.0", "").ToString());
+            v = double.Parse(dt.Compute("10.0/3", "").ToString());
+
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -64,57 +84,73 @@ namespace Calculator
                     btn = num9;
                     break;
                 case '.':
-                    btn = dotBtn;
-                    break;
+                    dotBtn.PerformClick();
+                    return;
                 case '-':
-                    btn = subBtn;
-                    break;
+                    subBtn.PerformClick();
+                    return;
                 case '+':
-                    btn = addBtn; 
-                    break;
+                    addBtn.PerformClick();
+                    return;
                 case '/':
-                    btn = divBtn;
-                    break;
+                    divBtn.PerformClick();
+                    return;
                 case '*':
-                    btn = mulBtn;
-                    break;
+                    mulBtn.PerformClick();
+                    return;
                 case '=':
+                    equalBtn.PerformClick();
+                    return;
                 case (char)13: //enter key
-                    btn = equalBtn;
-                    break;
+                    equalBtn.PerformClick();
+                    return;
             }
 
             if (btn != null)
-            {                
+            {
                 btn.PerformClick();
-                if (reg0 != 0.0)
+                if (!string.IsNullOrEmpty(reg0))
                     dirty = true;
             }
         }
 
         private void num_Click(object sender, EventArgs e)
         {
-            Button btn = sender as Button;
-            int val = int.Parse(btn.Text);
+            try
+            {
+                Button btn = sender as Button;
+                int val = int.Parse(btn.Text);
 
-            string repr = screen.Text;
-            if (dotPressed)
-            {
-                repr += '.';
-                dotPressed = false;
+                string repr = reg0;
+                if (dotPressed)
+                {
+                    repr += '.';
+                    dotPressed = false;
+                }
+                repr += val.ToString();
+                double tmp = double.Parse(repr);
+                if (tmp > 0.0 && negative == true)
+                {
+                    tmp *= -1.0;
+                }
+                reg0 = tmp.ToString();
+                UpdateScreen();
             }
-            repr += val.ToString();
-            reg0 = double.Parse(repr);
-            if (reg0 > 0.0 && negative == true)
+            catch (Exception)
             {
-                reg0 *= -1.0;
             }
-            UpdateScreen();
         }
 
         private void UpdateScreen()
         {
-            screen.Text = reg0.ToString();
+            if (string.IsNullOrEmpty(reg0))
+            {
+                screen.Text = "0";
+            }
+            else
+            {
+                screen.Text = reg0;
+            }
         }
 
         private void dotBtn_Click(object sender, EventArgs e)
@@ -123,9 +159,48 @@ namespace Calculator
                 dotPressed = true;
         }
 
+        private void Compute()
+        {
+            if (string.IsNullOrEmpty(reg0))
+                return;
+
+            if (!string.IsNullOrEmpty(reg1))
+            {
+                string op_repr = string.Empty;
+                switch (op)
+                {
+                    case Operation.Add:
+                        op_repr = "+";
+                        break;
+                    case Operation.Sub:
+                        op_repr = "-";
+                        break;
+                    case Operation.Div:
+                        op_repr = "/";
+                        break;
+                    case Operation.Mul:
+                        op_repr = "*";
+                        break;
+                }
+                string expr = reg1 + op_repr + reg0;
+                reg1 = dataTable.Compute(expr, "").ToString();
+                reg0 = string.Empty;
+            }
+            else
+            {
+                reg1 = reg0;
+                reg0 = string.Empty;
+            }
+
+            dirty = false;
+            negative = false;
+            screen.Text = reg1;
+        }
+
         private void addBtn_Click(object sender, EventArgs e)
         {
-
+            op = Operation.Add;
+            Compute();
         }
 
         private void subBtn_Click(object sender, EventArgs e)
@@ -136,23 +211,26 @@ namespace Calculator
             }
             else
             {
-
+                op = Operation.Sub;
+                Compute();
             }
         }
 
         private void mulBtn_Click(object sender, EventArgs e)
         {
-
+            op = Operation.Mul;
+            Compute();
         }
 
         private void divBtn_Click(object sender, EventArgs e)
         {
-
+            op = Operation.Div;
+            Compute();
         }
 
         private void equalBtn_Click(object sender, EventArgs e)
         {
-
+            Compute();
         }
 
         private void percentBtn_Click(object sender, EventArgs e)
