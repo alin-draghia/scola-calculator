@@ -156,6 +156,7 @@
             this.memClearBtn.TabStop = false;
             this.memClearBtn.Text = "MC";
             this.memClearBtn.UseVisualStyleBackColor = true;
+            this.memClearBtn.Click += new System.EventHandler(this.memClearBtn_Click);
             // 
             // memRecallBtn
             // 
@@ -168,6 +169,7 @@
             this.memRecallBtn.TabStop = false;
             this.memRecallBtn.Text = "MR";
             this.memRecallBtn.UseVisualStyleBackColor = true;
+            this.memRecallBtn.Click += new System.EventHandler(this.memRecallBtn_Click);
             // 
             // memStoreBtn
             // 
@@ -180,6 +182,7 @@
             this.memStoreBtn.TabStop = false;
             this.memStoreBtn.Text = "MS";
             this.memStoreBtn.UseVisualStyleBackColor = true;
+            this.memStoreBtn.Click += new System.EventHandler(this.memStoreBtn_Click);
             // 
             // memAddBtn
             // 
@@ -192,6 +195,7 @@
             this.memAddBtn.TabStop = false;
             this.memAddBtn.Text = "M+";
             this.memAddBtn.UseVisualStyleBackColor = true;
+            this.memAddBtn.Click += new System.EventHandler(this.memAddBtn_Click);
             // 
             // memSubBtn
             // 
@@ -204,6 +208,7 @@
             this.memSubBtn.TabStop = false;
             this.memSubBtn.Text = "M-";
             this.memSubBtn.UseVisualStyleBackColor = true;
+            this.memSubBtn.Click += new System.EventHandler(this.memSubBtn_Click);
             // 
             // delBtn
             // 
@@ -216,6 +221,7 @@
             this.delBtn.TabStop = false;
             this.delBtn.Text = "DEL";
             this.delBtn.UseVisualStyleBackColor = true;
+            this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
             // 
             // clearEntryBtn
             // 
@@ -228,6 +234,7 @@
             this.clearEntryBtn.TabStop = false;
             this.clearEntryBtn.Text = "CE";
             this.clearEntryBtn.UseVisualStyleBackColor = true;
+            this.clearEntryBtn.Click += new System.EventHandler(this.clearEntryBtn_Click);
             // 
             // clearBtn
             // 
@@ -240,6 +247,7 @@
             this.clearBtn.TabStop = false;
             this.clearBtn.Text = "C";
             this.clearBtn.UseVisualStyleBackColor = true;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
             // changeSignBtn
             // 
@@ -252,6 +260,7 @@
             this.changeSignBtn.TabStop = false;
             this.changeSignBtn.Text = "+/-";
             this.changeSignBtn.UseVisualStyleBackColor = true;
+            this.changeSignBtn.Click += new System.EventHandler(this.changeSignBtn_Click);
             // 
             // sqrtBtn
             // 
@@ -394,6 +403,7 @@
             this.invBtn.TabStop = false;
             this.invBtn.Text = "1/x";
             this.invBtn.UseVisualStyleBackColor = true;
+            this.invBtn.Click += new System.EventHandler(this.invBtn_Click);
             // 
             // num1
             // 

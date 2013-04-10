@@ -13,45 +13,29 @@ namespace Calculator
 {
     public partial class Form1 : Form
     {
-        private bool dirty = false;
-        private bool dotPressed = false;
-        private bool negative = false;
-        private string reg0 = String.Empty;
-        private string reg1 = String.Empty;
-        private string reg2 = String.Empty;
 
-        private DataTable dataTable = new DataTable();
+      
 
-        enum Operation
-        {
-            None,
-            Add,
-            Sub,
-            Div,
-            Mul
-        };
-
-        Operation op = Operation.None;
-
+        CalcFSM calc;
         public Form1()
         {
             InitializeComponent();
             // set this, otherwise key press won't fire
             this.KeyPreview = true;
-            UpdateScreen();
-            DataTable dt = new DataTable();
-            double v = double.Parse(dt.Compute("-5.44", "").ToString());
-            v = double.Parse(dt.Compute("-5.44 + 10.10", "").ToString());
-            v = double.Parse(dt.Compute("+3", "").ToString());
-            v = double.Parse(dt.Compute("10/3.0", "").ToString());
-            v = double.Parse(dt.Compute("10.0/3", "").ToString());
+            this.screen.Text = "0";
+            calc = new CalcFSM(UpdateScreen);
+        }
 
+        private void UpdateScreen(string obj)
+        {
+            screen.Text = obj;
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
             Button btn = null;
             char c = e.KeyChar;
+
             switch (c)
             {
                 case '0':
@@ -110,143 +94,104 @@ namespace Calculator
             if (btn != null)
             {
                 btn.PerformClick();
-                if (!string.IsNullOrEmpty(reg0))
-                    dirty = true;
             }
         }
 
         private void num_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Button btn = sender as Button;
-                int val = int.Parse(btn.Text);
-
-                string repr = reg0;
-                if (dotPressed)
-                {
-                    repr += '.';
-                    dotPressed = false;
-                }
-                repr += val.ToString();
-                double tmp = double.Parse(repr);
-                if (tmp > 0.0 && negative == true)
-                {
-                    tmp *= -1.0;
-                }
-                reg0 = tmp.ToString();
-                UpdateScreen();
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        private void UpdateScreen()
-        {
-            if (string.IsNullOrEmpty(reg0))
-            {
-                screen.Text = "0";
-            }
-            else
-            {
-                screen.Text = reg0;
-            }
+            Button btn = sender as Button;            
+            char digit = btn.Text[0];
+            calc.process_event(CalcFSM.Events.Digit, digit);
         }
 
         private void dotBtn_Click(object sender, EventArgs e)
         {
-            if (!screen.Text.Contains('.'))
-                dotPressed = true;
-        }
-
-        private void Compute()
-        {
-            if (string.IsNullOrEmpty(reg0))
-                return;
-
-            if (!string.IsNullOrEmpty(reg1))
-            {
-                string op_repr = string.Empty;
-                switch (op)
-                {
-                    case Operation.Add:
-                        op_repr = "+";
-                        break;
-                    case Operation.Sub:
-                        op_repr = "-";
-                        break;
-                    case Operation.Div:
-                        op_repr = "/";
-                        break;
-                    case Operation.Mul:
-                        op_repr = "*";
-                        break;
-                }
-                string expr = reg1 + op_repr + reg0;
-                reg1 = dataTable.Compute(expr, "").ToString();
-                reg0 = string.Empty;
-            }
-            else
-            {
-                reg1 = reg0;
-                reg0 = string.Empty;
-            }
-
-            dirty = false;
-            negative = false;
-            screen.Text = reg1;
+            calc.process_event(CalcFSM.Events.Dot, null);
         }
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            op = Operation.Add;
-            Compute();
+            calc.process_event(CalcFSM.Events.Add, null);
         }
 
         private void subBtn_Click(object sender, EventArgs e)
         {
-            if (!dirty)
-            {
-                negative = true;
-            }
-            else
-            {
-                op = Operation.Sub;
-                Compute();
-            }
+            calc.process_event(CalcFSM.Events.Sub, null);
         }
 
         private void mulBtn_Click(object sender, EventArgs e)
         {
-            op = Operation.Mul;
-            Compute();
+            calc.process_event(CalcFSM.Events.Mul, null);
         }
 
         private void divBtn_Click(object sender, EventArgs e)
         {
-            op = Operation.Div;
-            Compute();
+            calc.process_event(CalcFSM.Events.Div, null);
         }
 
         private void equalBtn_Click(object sender, EventArgs e)
         {
-            Compute();
+            calc.process_event(CalcFSM.Events.Equals, null);
         }
 
         private void percentBtn_Click(object sender, EventArgs e)
         {
-
+            calc.process_event(CalcFSM.Events.Percent, null);
         }
 
         private void sqrtBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(reg0))
-                return;
-            double val = double.Parse(reg0);
-            val = Math.Sqrt(val);
-            reg0 = val.ToString();
-            screen.Text = reg0;
+            calc.process_event(CalcFSM.Events.Sqrt, null);
+        }
+
+        private void invBtn_Click(object sender, EventArgs e)
+        {
+            calc.process_event(CalcFSM.Events.OneOverX, null);
+        }
+
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            calc.process_event(CalcFSM.Events.Clear, null);
+        }
+
+        private void clearEntryBtn_Click(object sender, EventArgs e)
+        {
+            calc.process_event(CalcFSM.Events.ClearEntry, null);
+        }
+
+        private void changeSignBtn_Click(object sender, EventArgs e)
+        {
+            calc.process_event(CalcFSM.Events.Sign, null);
+        }
+
+        private void delBtn_Click(object sender, EventArgs e)
+        {
+            calc.process_event(CalcFSM.Events.Del, null);
+        }
+
+        private void memClearBtn_Click(object sender, EventArgs e)
+        {
+            calc.process_event(CalcFSM.Events.MemoryClear, null);
+        }
+
+        private void memRecallBtn_Click(object sender, EventArgs e)
+        {
+            calc.process_event(CalcFSM.Events.MemoryRecall, null);
+        }
+
+        private void memStoreBtn_Click(object sender, EventArgs e)
+        {
+            calc.process_event(CalcFSM.Events.MemoryStore, null);
+        }
+
+        private void memAddBtn_Click(object sender, EventArgs e)
+        {
+            calc.process_event(CalcFSM.Events.MemoryAdd, null);
+        }
+
+        private void memSubBtn_Click(object sender, EventArgs e)
+        {
+            calc.process_event(CalcFSM.Events.MemorySub, null);
         }
     }
 }
