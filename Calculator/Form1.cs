@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Calculator
 {
     public partial class Form1 : Form
@@ -240,7 +241,12 @@ namespace Calculator
 
         private void sqrtBtn_Click(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrEmpty(reg0))
+                return;
+            double val = double.Parse(reg0);
+            val = Math.Sqrt(val);
+            reg0 = val.ToString();
+            screen.Text = reg0;
         }
     }
 }
