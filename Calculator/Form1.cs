@@ -14,12 +14,16 @@ namespace Calculator
 {
     public partial class Form1 : Form
     {
-
+        
         CalcFSM calc;
         string screen_text = "0";
         public Form1()
-        {
+        {           
+            
             InitializeComponent();
+
+            this.notifyIcon1.Icon = this.Icon;
+
             digitGroupToolStripMenuItem.Checked = Properties.Settings.Default.DigitGroup;
             // set this, otherwise key press won't fire
             this.KeyPreview = true;
@@ -220,6 +224,24 @@ namespace Calculator
         {
             Properties.Settings.Default.DigitGroup = digitGroupToolStripMenuItem.Checked;
             UpdateScreen(this.screen_text);
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.notifyIcon1.Visible = true;
+                this.notifyIcon1.ShowBalloonTip(1000);
+                this.ShowInTaskbar = false;
+            }
+          
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            this.ShowInTaskbar = true;
+            this.notifyIcon1.Visible = false;
         }
     }
 }

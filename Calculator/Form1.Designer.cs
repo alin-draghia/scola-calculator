@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,6 +68,7 @@
             this.addBtn = new System.Windows.Forms.Button();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.digitGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -526,6 +528,13 @@
             this.digitGroupToolStripMenuItem.Text = "Digit Group";
             this.digitGroupToolStripMenuItem.CheckedChanged += new System.EventHandler(this.digitGroupToolStripMenuItem_CheckedChanged);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipText = "Click to resore";
+            this.notifyIcon1.BalloonTipTitle = "Calculator";
+            this.notifyIcon1.Text = "Calculator";
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -566,6 +575,7 @@
             this.Text = "Calculator";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
             this.ResumeLayout(false);
@@ -614,6 +624,7 @@
         private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem digitGroupToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 
