@@ -132,9 +132,6 @@ namespace Calculator
             char c = (char)arg;
             if (state == States.Init)
             {
-                if (c == '0')
-                    return;
-
                 Screen = string.Empty;
 
                 if (negative)
@@ -143,6 +140,9 @@ namespace Calculator
                 state = States.Accumulate;
             }
             Screen = Screen + c;
+
+            Screen = double.Parse(Screen).ToString();
+            
             update_screen_action.Invoke(Screen);
         }
 

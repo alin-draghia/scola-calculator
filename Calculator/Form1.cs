@@ -198,7 +198,7 @@ namespace Calculator
         {
             if (e.KeyCode == Keys.Escape)
             {
-                this.calc.process_event(CalcFSM.Events.ClearEntry, null);
+                this.calc.process_event(CalcFSM.Events.Clear, null);
             }
             if (e.KeyCode == Keys.Back)
             {
