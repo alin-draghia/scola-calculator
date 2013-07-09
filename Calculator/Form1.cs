@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,21 +15,30 @@ namespace Calculator
     public partial class Form1 : Form
     {
 
-      
-
         CalcFSM calc;
+        string screen_text = "0";
         public Form1()
         {
             InitializeComponent();
+            digitGroupToolStripMenuItem.Checked = Properties.Settings.Default.DigitGroup;
             // set this, otherwise key press won't fire
             this.KeyPreview = true;
-            this.screen.Text = "0";
+            UpdateScreen(screen_text);
             calc = new CalcFSM(UpdateScreen);
         }
 
         private void UpdateScreen(string obj)
         {
-            screen.Text = obj;
+            var culture = CultureInfo.CreateSpecificCulture("en-US");
+            screen_text = obj;
+            if (digitGroupToolStripMenuItem.Checked)
+            {
+                screen.Text = double.Parse(screen_text).ToString("N");
+            }
+            else
+            {
+                screen.Text = double.Parse(screen_text).ToString();
+            }            
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -204,6 +214,12 @@ namespace Calculator
             {
                 this.calc.process_event(CalcFSM.Events.Del, null);
             }
+        }
+
+        private void digitGroupToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.DigitGroup = digitGroupToolStripMenuItem.Checked;
+            UpdateScreen(this.screen_text);
         }
     }
 }

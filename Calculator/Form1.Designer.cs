@@ -65,6 +65,8 @@
             this.num0 = new System.Windows.Forms.Button();
             this.dotBtn = new System.Windows.Forms.Button();
             this.addBtn = new System.Windows.Forms.Button();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.digitGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,14 +93,16 @@
             // exitMenu
             // 
             this.exitMenu.Name = "exitMenu";
-            this.exitMenu.Size = new System.Drawing.Size(92, 22);
+            this.exitMenu.Size = new System.Drawing.Size(152, 22);
             this.exitMenu.Text = "Exit";
             // 
             // editMenu
             // 
             this.editMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyMenu,
-            this.pasteMenu});
+            this.pasteMenu,
+            this.toolStripMenuItem1,
+            this.digitGroupToolStripMenuItem});
             this.editMenu.Name = "editMenu";
             this.editMenu.Size = new System.Drawing.Size(39, 20);
             this.editMenu.Text = "Edit";
@@ -106,13 +110,13 @@
             // copyMenu
             // 
             this.copyMenu.Name = "copyMenu";
-            this.copyMenu.Size = new System.Drawing.Size(102, 22);
+            this.copyMenu.Size = new System.Drawing.Size(152, 22);
             this.copyMenu.Text = "Copy";
             // 
             // pasteMenu
             // 
             this.pasteMenu.Name = "pasteMenu";
-            this.pasteMenu.Size = new System.Drawing.Size(102, 22);
+            this.pasteMenu.Size = new System.Drawing.Size(152, 22);
             this.pasteMenu.Text = "Paste";
             // 
             // helpMenu
@@ -509,6 +513,19 @@
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // digitGroupToolStripMenuItem
+            // 
+            this.digitGroupToolStripMenuItem.CheckOnClick = true;
+            this.digitGroupToolStripMenuItem.Name = "digitGroupToolStripMenuItem";
+            this.digitGroupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.digitGroupToolStripMenuItem.Text = "Digit Group";
+            this.digitGroupToolStripMenuItem.CheckedChanged += new System.EventHandler(this.digitGroupToolStripMenuItem_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -595,6 +612,8 @@
         private System.Windows.Forms.Button num0;
         private System.Windows.Forms.Button dotBtn;
         private System.Windows.Forms.Button addBtn;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem digitGroupToolStripMenuItem;
     }
 }
 

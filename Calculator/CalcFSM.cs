@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -139,9 +140,11 @@ namespace Calculator
 
                 state = States.Accumulate;
             }
+            
             Screen = Screen + c;
 
-            Screen = double.Parse(Screen).ToString();
+            if (double.Parse(Screen) == 0.0)
+                Screen = "0";
             
             update_screen_action.Invoke(Screen);
         }
