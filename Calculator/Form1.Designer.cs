@@ -132,8 +132,9 @@
             // aboutMenu
             // 
             this.aboutMenu.Name = "aboutMenu";
-            this.aboutMenu.Size = new System.Drawing.Size(107, 22);
+            this.aboutMenu.Size = new System.Drawing.Size(152, 22);
             this.aboutMenu.Text = "About";
+            this.aboutMenu.Click += new System.EventHandler(this.aboutMenu_Click);
             // 
             // screen
             // 

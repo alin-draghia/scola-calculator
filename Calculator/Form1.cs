@@ -243,5 +243,10 @@ namespace Calculator
             this.ShowInTaskbar = true;
             this.notifyIcon1.Visible = false;
         }
+
+        private void aboutMenu_Click(object sender, EventArgs e)
+        {
+            (new About()).ShowDialog();
+        }
     }
 }
