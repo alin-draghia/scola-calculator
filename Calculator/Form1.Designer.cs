@@ -114,12 +114,14 @@
             this.copyMenu.Name = "copyMenu";
             this.copyMenu.Size = new System.Drawing.Size(152, 22);
             this.copyMenu.Text = "Copy";
+            this.copyMenu.Click += new System.EventHandler(this.copyMenu_Click);
             // 
             // pasteMenu
             // 
             this.pasteMenu.Name = "pasteMenu";
             this.pasteMenu.Size = new System.Drawing.Size(152, 22);
             this.pasteMenu.Text = "Paste";
+            this.pasteMenu.Click += new System.EventHandler(this.pasteMenu_Click);
             // 
             // helpMenu
             // 

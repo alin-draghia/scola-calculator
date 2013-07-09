@@ -214,10 +214,22 @@ namespace Calculator
             {
                 this.calc.process_event(CalcFSM.Events.Clear, null);
             }
+
             if (e.KeyCode == Keys.Back)
             {
                 this.calc.process_event(CalcFSM.Events.Del, null);
             }
+
+            if (e.KeyData == (Keys.Control | Keys.V))
+            {
+                pasteMenu_Click(null, null);
+            }
+
+            if (e.KeyData == (Keys.Control | Keys.C))
+            {
+                copyMenu_Click(null, null);
+            }
+
         }
 
         private void digitGroupToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
@@ -247,6 +259,24 @@ namespace Calculator
         private void aboutMenu_Click(object sender, EventArgs e)
         {
             (new About()).ShowDialog();
+        }
+
+        private void copyMenu_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(screen.Text);
+        }
+
+        private void pasteMenu_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsText()) {
+                double d;
+                if (double.TryParse(Clipboard.GetText(), out d))
+                {
+                    this.screen_text = d.ToString();
+                    this.UpdateScreen(this.screen_text);
+
+                }
+            }
         }
     }
 }
