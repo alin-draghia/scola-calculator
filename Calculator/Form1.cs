@@ -193,5 +193,17 @@ namespace Calculator
         {
             calc.process_event(CalcFSM.Events.MemorySub, null);
         }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.calc.process_event(CalcFSM.Events.ClearEntry, null);
+            }
+            if (e.KeyCode == Keys.Back)
+            {
+                this.calc.process_event(CalcFSM.Events.Del, null);
+            }
+        }
     }
 }

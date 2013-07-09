@@ -70,25 +70,27 @@ namespace Calculator
                 };
 
             update_screen_action = update_screen;
+            Screen = "0";
+            update_screen_action.Invoke(Screen);
         }
 
         private void clear(object arg)
         {
             state = States.Init;
-            Screen = string.Empty;
+            Screen = "0";
             negative = false;
             Result = 0;
             Memory = 0;
             pending_op = Op.NoOp;
-            update_screen_action("0");
+            update_screen_action(Screen);
         }
 
         void clearEntry(object arg)
         {
             state = States.Init;
-            Screen = string.Empty;
+            Screen = "0";
             negative = false;
-            update_screen_action("0");
+            update_screen_action(Screen);
         }
 
         void do_pending_op()
@@ -267,13 +269,13 @@ namespace Calculator
             Screen = Screen.Remove(Screen.Length - 1);
             if (Screen.Length == 0)
             {
+                Screen = "0";
                 state = States.Init;
-                update_screen_action.Invoke("0");
+
             }
-            else
-            {
-                update_screen_action.Invoke(Screen);
-            }
+
+            update_screen_action.Invoke(Screen);
+
         }
     }
 }

@@ -547,6 +547,7 @@
             this.MainMenuStrip = this.mainMenu;
             this.Name = "Form1";
             this.Text = "Calculator";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
